@@ -49,6 +49,8 @@ Exception handleArtifactsError(int statusCode) {
       return ApiException(statusCode, "Character already at destination.");
     case 491:
       return ApiException(statusCode, "Slot is not empty.");
+    case 493:
+      return ApiException(statusCode, "Not skill level required.");
     case 494:
       return ApiException(statusCode, "Name already used.");
     case 495:
@@ -64,8 +66,6 @@ Exception handleArtifactsError(int statusCode) {
       return ApiException(statusCode, "Character not found.");
     case 499:
       return ApiException(statusCode, "Character in cooldown.");
-    case 598:
-      return ApiException(statusCode, "Monster not found on this map.");
     default:
       return ApiException(statusCode, 'Unexpected error: $statusCode');
   }
