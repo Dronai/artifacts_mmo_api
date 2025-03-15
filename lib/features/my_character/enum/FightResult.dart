@@ -1,0 +1,1 @@
+enum FightResult { win, loss }

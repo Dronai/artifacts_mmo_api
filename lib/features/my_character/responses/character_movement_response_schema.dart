@@ -1,4 +1,4 @@
-import 'package:artifacts_mmo_api/features/my_character/models/character_movement_data_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/move/character_movement_data_schema.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'character_movement_response_schema.g.dart';
