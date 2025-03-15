@@ -1,4 +1,4 @@
-import 'package:artifacts_mmo_api/features/characters/enum/skin.dart';
+import 'package:artifacts_mmo_api/common/enum/skin.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'add_character_schema.g.dart';

@@ -29,6 +29,15 @@ Exception handleArtifactsError(int statusCode) {
   switch (statusCode) {
     case 455:
       return ApiException(statusCode, "Token generation failed.");
+    case 478:
+      return ApiException(statusCode, "Missing item or insufficient quantity.");
+    case 484:
+      return ApiException(
+        statusCode,
+        "Character can't equip more than 100 utilities in the same slot.",
+      );
+    case 485:
+      return ApiException(statusCode, "This item is already equipped.");
     case 486:
       return ApiException(
         statusCode,
@@ -36,6 +45,8 @@ Exception handleArtifactsError(int statusCode) {
       );
     case 490:
       return ApiException(statusCode, "Character already at destination.");
+    case 491:
+      return ApiException(statusCode, "Slot is not empty.");
     case 494:
       return ApiException(statusCode, "Name already used.");
     case 495:
@@ -43,6 +54,8 @@ Exception handleArtifactsError(int statusCode) {
         statusCode,
         "Maximum characters reached on your account.",
       );
+    case 496:
+      return ApiException(statusCode, "Character level is insufficient.");
     case 497:
       return ApiException(statusCode, "Character inventory is full.");
     case 498:

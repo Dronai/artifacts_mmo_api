@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../enum/FightResult.dart';
+import '../../../../common/enum/FightResult.dart';
 import 'blocked_hits_schema.dart';
 import 'drop_schema.dart';
 
