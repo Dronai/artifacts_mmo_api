@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:artifacts_mmo_api/common/models/item/simple_item_schema.dart';
 import 'package:artifacts_mmo_api/features/characters/models/character_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/character_rest_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/equip_request_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/equip_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/unequip_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/item/use_item_response_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/item/use_item_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/move/character_movement_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/fight/character_fight_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/responses/character_fight_response_schema.dart';
@@ -215,6 +218,40 @@ class MyCharacterApi {
 
     if (responseBody.isNotEmpty) {
       return EquipRequestResponseSchema.fromJson(jsonDecode(responseBody)).data;
+    } else {
+      throw ApiException(response.statusCode, 'Response body is empty');
+    }
+  }
+
+  Future<UseItemSchema> actionUseItem(
+    String characterName,
+    SimpleItemSchema item,
+  ) async {
+    final String path = r'/my/{name}/action/use'.replaceAll(
+      '{name}',
+      characterName,
+    );
+    Map<String, String>? queryParams;
+    Map<String, String> headers = <String, String>{};
+
+    final response = await apiClient.invokeAPI(
+      HttpMethod.post,
+      path,
+      headers,
+      item,
+      queryParams,
+    );
+
+    if (response.statusCode == 404) {
+      throw ApiException(response.statusCode, "Item not found");
+    } else if (response.statusCode >= HttpStatus.badRequest) {
+      throw handleArtifactsError(response.statusCode);
+    }
+
+    final responseBody = await apiClient.decodeBodyBytes(response);
+
+    if (responseBody.isNotEmpty) {
+      return UseItemResponseSchema.fromJson(jsonDecode(responseBody)).data;
     } else {
       throw ApiException(response.statusCode, 'Response body is empty');
     }

@@ -29,6 +29,8 @@ Exception handleArtifactsError(int statusCode) {
   switch (statusCode) {
     case 455:
       return ApiException(statusCode, "Token generation failed.");
+    case 476:
+      return ApiException(statusCode, "This item is not a consumable.");
     case 478:
       return ApiException(statusCode, "Missing item or insufficient quantity.");
     case 484:
