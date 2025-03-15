@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../common/models/cooldown_schema.dart';
-import '../../characters/models/character_schema.dart';
+import '../../../../common/models/cooldown_schema.dart';
+import '../../../characters/models/character_schema.dart';
 
 part 'character_rest_data_schema.g.dart';
 
