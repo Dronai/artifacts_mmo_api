@@ -29,6 +29,12 @@ Exception handleArtifactsError(int statusCode) {
   switch (statusCode) {
     case 455:
       return ApiException(statusCode, "Token generation failed.");
+    case 460:
+      return ApiException(statusCode, "Insufficient gold in your bank.");
+    case 461:
+      return ApiException(statusCode, "A transaction is already in progress with this item/your gold in your bank.");
+    case 462:
+      return ApiException(statusCode, "Your bank is full.");
     case 473:
       return ApiException(statusCode, "This item cannot be recycled.");
     case 476:

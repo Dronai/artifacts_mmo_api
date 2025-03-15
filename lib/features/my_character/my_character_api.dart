@@ -4,12 +4,17 @@ import 'dart:io';
 import 'package:artifacts_mmo_api/common/models/item/delete_item_schema.dart';
 import 'package:artifacts_mmo_api/common/models/item/simple_item_schema.dart';
 import 'package:artifacts_mmo_api/features/characters/models/character_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/bank/bank_gold_transaction_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/bank/bank_item_transaction_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/models/bank/deposit_withdraw_gold_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/fight/character_rest_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/gathering/recycling_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/gathering/skill_data_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/equip_request_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/equip_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/models/item/unequip_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/responses/bank_gold_transaction_response_schema.dart';
+import 'package:artifacts_mmo_api/features/my_character/responses/bank_item_transaction_response_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/responses/delete_item_response_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/responses/recycling_response_schema.dart';
 import 'package:artifacts_mmo_api/features/my_character/responses/skill_response_schema.dart';
@@ -406,6 +411,154 @@ class MyCharacterApi {
 
     if (responseBody.isNotEmpty) {
       return DeleteItemResponseSchema.fromJson(jsonDecode(responseBody)).data;
+    } else {
+      throw ApiException(response.statusCode, 'Response body is empty');
+    }
+  }
+
+  Future<BankGoldTransactionSchema> actionDepositBankGold(
+    String characterName,
+    DepositWithdrawGoldSchema depositWithdraw,
+  ) async {
+    final String path = r'/my/{name}/action/bank/deposit/gold'.replaceAll(
+      '{name}',
+      characterName,
+    );
+    Map<String, String>? queryParams;
+    Map<String, String> headers = <String, String>{};
+
+    final response = await apiClient.invokeAPI(
+      HttpMethod.post,
+      path,
+      headers,
+      depositWithdraw,
+      queryParams,
+    );
+
+    if (response.statusCode == 598) {
+      throw ApiException(response.statusCode, "Bank not found on this map.");
+    } else if (response.statusCode >= HttpStatus.badRequest) {
+      throw handleArtifactsError(response.statusCode);
+    }
+
+    final responseBody = await apiClient.decodeBodyBytes(response);
+
+    if (responseBody.isNotEmpty) {
+      return BankGoldTransactionResponseSchema.fromJson(
+        jsonDecode(responseBody),
+      ).data;
+    } else {
+      throw ApiException(response.statusCode, 'Response body is empty');
+    }
+  }
+
+  Future<BankGoldTransactionSchema> actionWithdrawBankGold(
+    String characterName,
+    DepositWithdrawGoldSchema depositWithdraw,
+  ) async {
+    final String path = r'/my/{name}/action/bank/withdraw/gold'.replaceAll(
+      '{name}',
+      characterName,
+    );
+    Map<String, String>? queryParams;
+    Map<String, String> headers = <String, String>{};
+
+    final response = await apiClient.invokeAPI(
+      HttpMethod.post,
+      path,
+      headers,
+      depositWithdraw,
+      queryParams,
+    );
+
+    if (response.statusCode == 598) {
+      throw ApiException(response.statusCode, "Bank not found on this map.");
+    } else if (response.statusCode >= HttpStatus.badRequest) {
+      throw handleArtifactsError(response.statusCode);
+    }
+
+    final responseBody = await apiClient.decodeBodyBytes(response);
+
+    if (responseBody.isNotEmpty) {
+      return BankGoldTransactionResponseSchema.fromJson(
+        jsonDecode(responseBody),
+      ).data;
+    } else {
+      throw ApiException(response.statusCode, 'Response body is empty');
+    }
+  }
+
+  Future<BankItemTransactionSchema> actionDepositBank(
+    String characterName,
+    SimpleItemSchema depositWithdraw,
+  ) async {
+    final String path = r'/my/{name}/action/bank/deposit'.replaceAll(
+      '{name}',
+      characterName,
+    );
+    Map<String, String>? queryParams;
+    Map<String, String> headers = <String, String>{};
+
+    final response = await apiClient.invokeAPI(
+      HttpMethod.post,
+      path,
+      headers,
+      depositWithdraw,
+      queryParams,
+    );
+
+    if (response.statusCode == 598) {
+      throw ApiException(response.statusCode, "Bank not found on this map.");
+    } else if (response.statusCode == 404) {
+      throw ApiException(response.statusCode, "Item not found.");
+    } else if (response.statusCode >= HttpStatus.badRequest) {
+      throw handleArtifactsError(response.statusCode);
+    }
+
+    final responseBody = await apiClient.decodeBodyBytes(response);
+
+    if (responseBody.isNotEmpty) {
+      return BankItemTransactionResponseSchema.fromJson(
+        jsonDecode(responseBody),
+      ).data;
+    } else {
+      throw ApiException(response.statusCode, 'Response body is empty');
+    }
+  }
+
+  Future<BankItemTransactionSchema> actionWithdrawBank(
+      String characterName,
+      SimpleItemSchema depositWithdraw,
+      ) async {
+    final String path = r'/my/{name}/action/bank/withdraw'.replaceAll(
+      '{name}',
+      characterName,
+    );
+    Map<String, String>? queryParams;
+    Map<String, String> headers = <String, String>{};
+
+    final response = await apiClient.invokeAPI(
+      HttpMethod.post,
+      path,
+      headers,
+      depositWithdraw,
+      queryParams,
+    );
+
+    if (response.statusCode == 598) {
+      throw ApiException(response.statusCode, "Bank not found on this map.");
+    } else if (response.statusCode == 404) {
+      throw ApiException(response.statusCode, "Item not found.");
+    } else if (response.statusCode >= HttpStatus.badRequest) {
+      throw handleArtifactsError(response.statusCode);
+    }
+
+    final responseBody = await apiClient.decodeBodyBytes(response);
+
+    if (responseBody.isNotEmpty) {
+      return BankItemTransactionResponseSchema.fromJson(
+        jsonDecode(responseBody),
+      ).data;
     } else {
       throw ApiException(response.statusCode, 'Response body is empty');
     }
