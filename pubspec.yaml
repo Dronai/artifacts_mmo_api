@@ -1,6 +1,6 @@
 name: artifacts_mmo_api
 description: "API implementation of Artifacts MMO"
-version: 0.0.1
+version: 0.0.1+1
 
 environment:
   sdk: ^3.7.0

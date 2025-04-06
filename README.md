@@ -31,12 +31,14 @@ https://github.com/regenvanwalbeek/artifacts_mmo_openapi
 
 Considering that every function that doesn't appear in this list is not implemented
 
-| Class           | Method | Function        | Implemented        |
-|-----------------|--------|-----------------|--------------------|
-| **TokenApi**    | GET    | GetToken        | :white_check_mark: |
-| **MyCharacter** | GET    | GetMyCharacters | :gear:             |
-| **Characters**  | GET    | GetCharacter    | :gear:             |
+| Class           | Method | Function        | Implemented         |
+|-----------------|--------|-----------------|---------------------|
+| **TokenApi**    | GET    | GetToken        | :white_check_mark:  |
+| **MyCharacter** | GET    | GetMyCharacters | :gear:              |
+| **Characters**  | GET    | GetCharacter    | :gear:              |
+| **Maps**        | GET    | GetAllMap       | :white_check_mark:  |
 
+<!--
 ## Getting started
 
 Nothing for the moment
@@ -55,3 +57,4 @@ const like = 'sample';
 TODO: Tell users more about the package: where to find more information, how to
 contribute to the package, how to file issues, what response they can expect
 from the package authors, and more.
+-->

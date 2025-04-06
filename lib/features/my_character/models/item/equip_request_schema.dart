@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import '../../../../common/models/cooldown_schema.dart';
 import '../../../../common/models/item/item_schema.dart';
 import '../../../characters/models/character_schema.dart';
-import '../../../../common/enum/ItemSlot.dart';
+import '../../../../common/enum/item_slot.dart';
 
 part 'equip_request_schema.g.dart';
 

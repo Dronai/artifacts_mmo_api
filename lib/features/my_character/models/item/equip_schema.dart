@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../common/enum/ItemSlot.dart';
+import '../../../../common/enum/item_slot.dart';
 
 part 'equip_schema.g.dart';
 
