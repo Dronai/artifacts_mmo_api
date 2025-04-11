@@ -6,13 +6,12 @@ part 'character_response_schema.g.dart';
 
 @JsonSerializable()
 class CharacterResponseSchema {
-  CharacterResponseSchema({
-    required this.data,
-  });
+  CharacterResponseSchema({required this.data});
 
   CharacterSchema data;
 
-  factory CharacterResponseSchema.fromJson(Map<String, dynamic> json) => _$CharacterResponseSchemaFromJson(json);
+  factory CharacterResponseSchema.fromJson(Map<String, dynamic> json) =>
+      _$CharacterResponseSchemaFromJson(json);
 
   Map<String, dynamic> toJson() => _$CharacterResponseSchemaToJson(this);
 }
