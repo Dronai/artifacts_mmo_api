@@ -45,10 +45,10 @@ class ItemsApi {
       queryParams.putIfAbsent("max_level", () => maxLevel.toString());
     }
     if (page != null) {
-      queryParams.putIfAbsent("page", () => minLevel.toString());
+      queryParams.putIfAbsent("page", () => page.toString());
     }
     if (size != null) {
-      queryParams.putIfAbsent("size", () => maxLevel.toString());
+      queryParams.putIfAbsent("size", () => size.toString());
     }
 
     final response = await apiClient.invokeAPI(
