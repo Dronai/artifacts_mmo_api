@@ -51,4 +51,7 @@ const _$ItemTypeEnumMap = {
   ItemType.utility: 'utility',
   ItemType.bag: 'bag',
   ItemType.rune: 'rune',
+  ItemType.consumable: 'consumable',
+  ItemType.currency: 'currency',
+  ItemType.resource: 'resource',
 };

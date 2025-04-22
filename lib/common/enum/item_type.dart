@@ -10,5 +10,8 @@ enum ItemType {
   artifact,
   utility,
   bag,
-  rune
+  rune,
+  consumable,
+  currency,
+  resource,
 }
