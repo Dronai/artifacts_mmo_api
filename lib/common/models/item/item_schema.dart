@@ -1,4 +1,5 @@
 import 'package:artifacts_mmo_api/common/enum/item_slot.dart';
+import 'package:artifacts_mmo_api/common/enum/item_type.dart';
 import 'package:artifacts_mmo_api/common/models/item/simple_effect_schema.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -26,7 +27,7 @@ class ItemSchema {
 
   int level;
 
-  ItemSlot type;
+  ItemType type;
 
   String subtype;
 
