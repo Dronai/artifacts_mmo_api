@@ -1,5 +1,5 @@
 import 'package:artifacts_mmo_api/common/models/item/simple_effect_schema.dart';
-import 'package:artifacts_mmo_api/features/monsters/models/drop_rate_schema.dart';
+import 'package:artifacts_mmo_api/common/models/drop_rate_schema.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'monster_schema.g.dart';
