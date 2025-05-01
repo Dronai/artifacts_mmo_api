@@ -1,3 +1,4 @@
+import 'package:artifacts_mmo_api/common/enum/map_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'map_content_schema.g.dart';
@@ -10,7 +11,7 @@ class MapContentSchema {
   });
 
   /// Type of the content.
-  String type;
+  MapType type;
 
   /// Code of the content.
   String code;

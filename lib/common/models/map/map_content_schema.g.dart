@@ -8,9 +8,22 @@ part of 'map_content_schema.dart';
 
 MapContentSchema _$MapContentSchemaFromJson(Map<String, dynamic> json) =>
     MapContentSchema(
-      type: json['type'] as String,
+      type: $enumDecode(_$MapTypeEnumMap, json['type']),
       code: json['code'] as String,
     );
 
 Map<String, dynamic> _$MapContentSchemaToJson(MapContentSchema instance) =>
-    <String, dynamic>{'type': instance.type, 'code': instance.code};
+    <String, dynamic>{
+      'type': _$MapTypeEnumMap[instance.type]!,
+      'code': instance.code,
+    };
+
+const _$MapTypeEnumMap = {
+  MapType.monster: 'monster',
+  MapType.resource: 'resource',
+  MapType.workshop: 'workshop',
+  MapType.bank: 'bank',
+  MapType.grand_exchange: 'grand_exchange',
+  MapType.tasks_master: 'tasks_master',
+  MapType.npc: 'npc',
+};
