@@ -38,7 +38,8 @@ class MyCharacterApi {
     : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
-
+  
+  @Deprecated("The endpoint getMyCharacters has been replaced by getAccountCharacters.")
   Future<List<CharacterSchema>> getMyCharacters() async {
     final String path = r'/my/characters';
     Object? body;
