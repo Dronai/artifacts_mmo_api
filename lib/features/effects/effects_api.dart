@@ -13,7 +13,7 @@ class EffectsApi {
 
   final ApiClient apiClient;
 
-  Future<DataPageEffectSchema> getAllItems(
+  Future<DataPageEffectSchema> getAllEffects(
     int? page,
     int? size,
   ) async {
